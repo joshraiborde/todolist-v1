@@ -5,21 +5,41 @@ const app = express();
 const port = 3000;
 var now = new Date();
 
-app.get("/", (req, res)=>{
+app.set("view engine", "ejs");
 
-    var today = new Date();
-    var currentDay = today.getDay()
+app.get("/", (req, res) => {
+  var today = new Date();
+  var currentDay = today.getDay();
+  var day = "";
 
-    if (currentDay === 6 || currentDay === 0) { // tests to see if it's a Sat or Sun
-        res.write("<h1>It's the Weekend because it is " + today.toUTCString() + "!</h1>")
-    } else {
-        res.sendFile(__dirname + "/index.html")
-    }
-
-
-    // res.send("Hello");
+  switch (currentDay) {
+    case 0:
+      day = "Sunday";
+      break;
+    case 1:
+      day = "Monday";
+      break;
+    case 2:
+      day = "Tuesday";
+      break;
+    case 3:
+      day = "Wednesday";
+      break;
+    case 4:
+      day = "Thursday";
+      break;
+    case 5:
+      day = "Friday";
+      break;
+    case 6:
+      day = "Saturday";
+      break;
+    default:
+      console.log("Error: currentDay is equal to: " + currentDay)
+  }
+  res.render("list", { kindOfDay: day });
 });
 
-app.listen(port, ()=>{
-    console.log("Server started on port: " + port + " on " + now.toUTCString());
-})
+app.listen(port, () => {
+  console.log("Server started on port: " + port + " on " + now.toUTCString());
+});
