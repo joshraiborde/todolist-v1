@@ -18,7 +18,8 @@ app.get("/", (req, res) => {
   var options = {
     weekday: "long",
     day: "numeric",
-    month: "long"
+    month: "long",
+    year: "numeric"
   };
 
   var day = today.toLocaleDateString("en-US", options);
