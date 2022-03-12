@@ -5,7 +5,8 @@ const app = express();
 const port = 3000;
 var now = new Date();
 
-var items = ["Buy Food", "Cook Food", "Eat Food"];
+var items = [];
+// var items = ["Buy Food", "Cook Food", "Eat Food"];
 
 app.set("view engine", "ejs");
 
