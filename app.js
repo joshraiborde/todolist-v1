@@ -8,7 +8,6 @@ const now = new Date();
 
 const items = [];
 const workItems = [];
-// let items = ["Buy Food", "Cook Food", "Eat Food"];
 
 app.set("view engine", "ejs");
 
@@ -30,7 +29,6 @@ app.post("/", (req, res) => {
     res.redirect("/work");
   } else {
     items.push(item);
-    //   console.log(item);
     res.redirect("/");
   }
 });
